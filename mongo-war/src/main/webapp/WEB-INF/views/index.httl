@@ -1,0 +1,72 @@
+<html>
+<head>
+<style >
+ 
+html, body  {
+    margin: 20;
+    padding: 0;
+}
+
+.busi-tab-head {
+    background: none repeat scroll 0 0 #F2F5F7;
+    border: 1px solid #EAEAEA;
+    height: 24px;
+    width: 800px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    word-break: break-all;
+    border: 1px solid #EAEAEA;
+}
+
+.role-tbody {
+    position: relative;
+}
+.role-tbody, .role-tbody table {
+    background: none repeat scroll 0 0 #FFFFFF;
+    clear: both;
+    color: #768A99;
+    width: 800px;
+    
+}
+.role-tbody {
+    position: relative;
+    width: 100% !important;
+}
+ 
+</style>
+</head>
+<body>
+	<p>HTTL+ mongodb+ Struts2 Demo</p>
+	<!--#if(users)-->
+	<table class="busi-tab-head" width="800px">
+    <tbody><tr style="color:#333;height:30px">
+        <td width="80px" height="28">序号</td>
+        <td width="80px">name</td>
+        <td width="130px">email</td>
+        <td width="120px">genda</td>
+        <td >department</td>
+    </tr>
+</tbody> 
+</table> 
+	<div class="role-tbody mark-table scrollBar" >
+      <table width="800px">  <tbody>
+        	<!--#foreach(User user in users)-->
+            <tr style="background: none repeat scroll 0% 0% rgb(255, 255, 255); color: rgb(118, 138, 153);height:30px">
+                <td width="80px"><span class="mr5">${foreach.count}</td>
+                <td width="80px">${user.name}</td>
+                <td width="130px">${user.email}</td>
+                <td width="120px">${user.genda}</td>
+                <td >${user.department.departmentName}</td>
+            </tr>
+            <!--#end(foreach)-->
+        </tbody>
+    </table>
+    </div>
+	$!{pageString}
+	<!--#end(if)-->
+ 
+</body>
+</html>
