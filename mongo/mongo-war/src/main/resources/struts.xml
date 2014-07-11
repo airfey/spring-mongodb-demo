@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE struts PUBLIC  
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"  
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.action.extension" value="do," />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.class.reloading.reloadConfig" value="false" />
+	<constant name="struts.locale" value="zh_CN" />
+	<!-- 允许访问静态方法 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
+	<!-- 允许使用/ -->
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+	<constant name="struts.i18n.reload" value="true" />
+	<package name="default" extends="httl-default">
+		<default-action-ref name="notFound" />
+		<action name="notFound">
+			<result type="redirect">/404</result>
+		</action>
+	</package>
+	<package name="front" extends="httl-default" namespace="/">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
+		</result-types>
+		<default-action-ref name="index" />
+		<!-- 404 -->
+		<action name="404" class="com.zandili.demo.mongo.action.NotFoundAction">
+			<result name="success" type="httl">/404.httl</result>
+		</action>
+		<action name="index" class="com.zandili.demo.mongo.action.IndexAction">
+			<result name="success" type="httl">/index.httl</result>
+		</action>
+	</package>
+</struts>
+
+
+
+
